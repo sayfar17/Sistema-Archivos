@@ -10,6 +10,27 @@
 <project name="Proyecto_LP" default="default" basedir=".">
     <description>Builds, tests, and runs the project Proyecto_LP.</description>
     <import file="nbproject/build-impl.xml"/>
+    <!-- Cargar archivo de configuración -->
+    <property file="config.properties"/>
+
+    <!-- Target para compilar -->
+    <target name="compile">
+        <javac srcdir="src" destdir="build/classes"/>
+    </target>
+
+    <!-- Target para ejecutar -->
+    <target name="run" depends="compile">
+        <java classname="com.miempresa.Main" fork="true">
+            <classpath>
+                <pathelement path="build/classes"/>
+            </classpath>
+            <!-- Pasar propiedades como argumentos -->
+            <arg value="${DB_HOST}"/>
+            <arg value="${DB_USER}"/>
+            <arg value="${DB_PASS}"/>
+        </java>
+    </target>
+
     <!--
 
     There exist several targets which are by default empty and which can be 
