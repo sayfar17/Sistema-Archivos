@@ -85,7 +85,7 @@ public class MUsuario {
     }
     public void add() throws SQLException{
         conn=BDUsuario.Enlace(conn);
-        String sqlinsertar="insert into USERS values (?,?,?,?,?)";
+        String sqlinsertar="insert into USERS (CARGO, DATOS, USUARIO, CONTRASEÑA, ESTADO) values (?,?,?,?,?)";
         PreparedStatement psta=conn.prepareStatement(sqlinsertar);
         psta.setString(1, cargo);
         psta.setString(2, nom);

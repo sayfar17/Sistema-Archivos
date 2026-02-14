@@ -6,6 +6,9 @@ package view.Panels;
 
 import java.awt.Color;
 import java.text.SimpleDateFormat;
+import javax.swing.Timer;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 /**
@@ -24,6 +27,14 @@ public class PanelPrincipal extends javax.swing.JPanel {
         String fechaFormateada;
         fechaFormateada=formato.format(fecha);
         lblfecha.setText(""+fechaFormateada);
+        
+        //hora en panel principal
+        Timer timer = new Timer(1000, e -> {
+            LocalTime now = LocalTime.now();
+            lblhora.setText(now.format(DateTimeFormatter.ofPattern("HH:mm:ss")));
+        });
+        timer.start();
+
     }
 
     /**
@@ -63,6 +74,7 @@ public class PanelPrincipal extends javax.swing.JPanel {
         jLabel20 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         lblfecha = new javax.swing.JLabel();
+        lblhora = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(1281, 678));
 
@@ -317,7 +329,11 @@ public class PanelPrincipal extends javax.swing.JPanel {
 
         lblfecha.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         lblfecha.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblfecha.setText("jLabel7");
+        lblfecha.setText("Fecha Actual ");
+
+        lblhora.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblhora.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblhora.setText("--:--:--");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -332,17 +348,20 @@ public class PanelPrincipal extends javax.swing.JPanel {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(pnlservicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(pnlfuncion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
                 .addComponent(pnlnorma, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(62, 62, 62)
-                        .addComponent(jLabel2)
-                        .addGap(20, 20, 20))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblfecha, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(70, 70, 70))))
+                        .addComponent(jLabel2))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(81, 81, 81)
+                        .addComponent(lblfecha, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(20, 20, 20))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblhora, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(144, 144, 144))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -367,7 +386,9 @@ public class PanelPrincipal extends javax.swing.JPanel {
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(pnlnorma, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, Short.MAX_VALUE)))))
-                .addGap(0, 48, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblhora, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -391,7 +412,7 @@ public class PanelPrincipal extends javax.swing.JPanel {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -420,6 +441,7 @@ public class PanelPrincipal extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel lblfecha;
+    private javax.swing.JLabel lblhora;
     public javax.swing.JPanel pnlfuncion;
     public javax.swing.JPanel pnlhistoria;
     public javax.swing.JPanel pnlnorma;
