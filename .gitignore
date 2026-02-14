@@ -19,6 +19,24 @@
 *.tar.gz
 *.rar
 
+# Archivos generados por Ant
+build/
+dist/
+nbbuild/
+nbdist/
+nbsupport/
+genfiles.properties
+
+# Configuración específica de NetBeans
+nbproject/private/
+nbproject/configurations.xml
+nbproject/project.properties
+
+# Archivos temporales
+*.tmp
+*.bak
+*.swp
+
 #Ignorar variables de entorno
 config.properties
 
